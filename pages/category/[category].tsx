@@ -11,11 +11,12 @@ import {
 	Stack,
 	Text,
 	Wrap,
-	WrapItem
+	WrapItem,
+	Link
 } from "@chakra-ui/react";
 import {GetServerSidePropsContext} from "next";
 import Image from "next/image";
-import Link from "next/link";
+import NextLink from "next/link";
 import {meals_category_list} from "../../config/api";
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
@@ -50,7 +51,8 @@ export default function MealsBasedOnCategory({category_meals}: Props) {
 		if (meal) {
 			return (
 				<Box
-					maxW={'300px'}
+					minW={'250px'}
+					maxW={'250px'}
 					w={'full'}
 					boxShadow={'md'}
 					rounded={'md'}
@@ -96,17 +98,21 @@ export default function MealsBasedOnCategory({category_meals}: Props) {
 			{loading ? <div>Loading...</div> :
 				<Container pt={`20px`} pb={`20px`} maxW={`6xl`} backgroundColor={`transparent`}>
 					<Heading pb={`20px`} textAlign={`center`}>Please Choose Your Meal</Heading>
-					<Flex ml={`42px`} mb={`10px`}>
-						<Link href={`/`}>
-							<Button backgroundColor={`transparent`} maxW={`50%`}>
-								<svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-									 xmlns="http://www.w3.org/2000/svg">
-									<path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
-										  d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
-								</svg>
-								Back To Homepage
-							</Button>
-						</Link>
+					<Flex mb={`10px`} p={`19px`}>
+						<NextLink href={`/`}>
+							<Link style={{float: 'left'}}>
+								<Flex>
+									<svg style={{ width: '20px' }} fill="none" stroke="currentColor" viewBox="0 0 24 24"
+										 xmlns="http://www.w3.org/2000/svg">
+										<path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+											  d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+									</svg>
+									<Text>
+										Back To Homepage
+									</Text>
+								</Flex>
+							</Link>
+						</NextLink>
 					</Flex>
 					<Wrap flexDirection="row" spacing={`30px`} justify='center'>
 						{
