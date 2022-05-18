@@ -18,6 +18,7 @@ import {GetServerSidePropsContext} from "next";
 import Image from "next/image";
 import NextLink from "next/link";
 import {meals_category_list} from "../../config/api";
+import BackLink from "../../components/backlink";
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
 	const {category} = context.query;
@@ -99,20 +100,7 @@ export default function MealsBasedOnCategory({category_meals}: Props) {
 				<Container pt={`20px`} pb={`20px`} maxW={`6xl`} backgroundColor={`transparent`}>
 					<Heading pb={`20px`} textAlign={`center`}>Please Choose Your Meal</Heading>
 					<Flex mb={`10px`} p={`19px`}>
-						<NextLink href={`/`}>
-							<Link style={{float: 'left'}}>
-								<Flex>
-									<svg style={{ width: '20px' }} fill="none" stroke="currentColor" viewBox="0 0 24 24"
-										 xmlns="http://www.w3.org/2000/svg">
-										<path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
-											  d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
-									</svg>
-									<Text>
-										Back To Homepage
-									</Text>
-								</Flex>
-							</Link>
-						</NextLink>
+						<BackLink text={`Back to Category`}/>
 					</Flex>
 					<Wrap flexDirection="row" spacing={`30px`} justify='center'>
 						{

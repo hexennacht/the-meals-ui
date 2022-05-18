@@ -15,6 +15,7 @@ import {
 import {GetServerSidePropsContext} from "next";
 import NextLink from "next/link";
 import {meals_id} from "../../config/api";
+import BackLink from "../../components/backlink";
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
 	const {idMeal} = context.query;
@@ -80,20 +81,7 @@ export default function MealsBasedOnId({item}: Props) {
 						columns={{ base: 1, lg: 2 }}
 						spacing={{ base: 8, md: 10 }}
 						py={{ base: 18, md: 24 }}>
-						<NextLink href={`/category/${meal?.strCategory!}`}>
-							<Link style={{float: 'left'}}>
-								<Flex>
-									<svg style={{ width: '20px' }} fill="none" stroke="currentColor" viewBox="0 0 24 24"
-										 xmlns="http://www.w3.org/2000/svg">
-										<path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
-											  d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
-									</svg>
-									<Text>
-										Back To {meal?.strCategory} Category
-									</Text>
-								</Flex>
-							</Link>
-						</NextLink>
+						<BackLink text={`Back To ${meal?.strCategory} Category`} href={`/category/${meal?.strCategory!}`}/>
 						<Spacer></Spacer>
 						<Flex direction={`column`}>
 							<Image
